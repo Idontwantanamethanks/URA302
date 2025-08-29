@@ -1,0 +1,264 @@
+# 1. Write a Python function to calculate the difference between a given number and 17. If the number is greater than 17, return twice the absolute difference
+
+def difference_from_17(num):
+    if num > 17:
+        return 2 * abs(num - 17)
+    else:
+        return abs(num - 17)
+
+n = int(input("Enter the number you want to check: "))
+print("Difference from 17:", difference_from_17(n))
+
+
+# 2. Write a Python function test_range(n) that returns True if the number is within 100–1000 or 2000, otherwise returns False
+
+def test_range(n):
+    if (n >= 100 and n <= 1000) or n == 2000:
+        return True
+    else:
+        return False
+
+n = int(input("Enter the number you want to check if in range 100-1000 or 2000: "))
+print("Is in range:", test_range(n))
+
+
+# 3. Write a Python function to reverse a string. Example: Input = 'robot', Output = 'tobor’
+
+def reverse(s):
+    return s[::-1]
+
+str_input = input("Enter the string to reverse: ")
+print("Reversed string:", reverse(str_input))
+
+
+# 4. Write a Python function that accepts a string and counts the number of uppercase and lowercase letters. Return the counts as a dictionary
+
+def count_case(s):
+    upper = 0
+    lower = 0
+    for i in s:
+        if i.isupper():
+            upper += 1
+        elif i.islower():
+            lower += 1
+    return {"uppercase": upper, "lowercase": lower}
+
+str_input = input("Enter the string to count uppercase and lowercase letters: ")
+print("Letter counts:", count_case(str_input))
+
+
+# 5. Write a Python function that takes a list and returns a new list with distinct elements from the first list
+
+def distinct_list(lst):
+    new_lst = []
+    for i in lst:
+        if i not in new_lst:
+            new_lst.append(i)
+    return new_lst
+
+lst_input = input("Enter list elements separated by space (e.g. 1 2 3 1 2): ")
+lst = list(map(int, lst_input.strip().split()))
+print("List with distinct elements:", distinct_list(lst))
+
+
+# 6. Write a Python program to return the even numbers from a given list.
+# Sample List : [1,2, 3, 4, 5, 6, 7, 8, 9] Expected Result : [2, 4, 6, 8]
+
+def even(lst):
+    even_list = []
+    for i in lst:
+        if i % 2 == 0:
+            even_list.append(i)
+    return even_list
+
+lst_input = input("Enter list elements separated by space to filter even numbers: ")
+lst = list(map(int, lst_input.strip().split()))
+print("Even numbers in the list:", even(lst))
+
+
+# 7. Write a Python program to define a function inside another function and call it. Example: Outer function = robot(), Inner function = move().
+
+def robot():
+    def move():
+        print("Robot moves forward.")
+    move()
+
+robot()
+
+
+# 8. Define a Python function student(name, age, course). Using function attributes, display the names of all arguments.
+
+def student(name, age, course):
+    pass
+
+print("Argument names:", student.__code__.co_varnames[:student.__code__.co_argcount])
+
+
+# 9. Write a Python function move_robot(x, y, direction) that takes a robot’s current position (x, y) and a direction ('up', 'down', 'left', 'right'). The function should return the new position of the robot. Example: move_robot(0,0,"up") → (0,1)
+
+def move_robot(x, y, direction):
+    if direction == 'up':
+        return (x, y + 1)
+    elif direction == 'down':
+        return (x, y - 1)
+    elif direction == 'left':
+        return (x - 1, y)
+    elif direction == 'right':
+        return (x + 1, y)
+    else:
+        return (x, y)
+
+x = int(input("Enter robot's current x position: "))
+y = int(input("Enter robot's current y position: "))
+direction = input("Enter direction (up/down/left/right): ")
+print("New robot position:", move_robot(x, y, direction))
+
+
+# 10. Write a Python function classify_temperature(temp) that classifies a robot’s environment:
+# Return "Cold" if temp < 15, Return "Moderate" if 15 ≤ temp ≤ 30, Return "Hot" if temp > 30
+
+def classify_temperature(temp):
+    if temp < 15:
+        return "Cold"
+    elif 15 <= temp <= 30:
+        return "Moderate"
+    else:
+        return "Hot"
+
+temp = float(input("Enter temperature to classify: "))
+print("Temperature classification:", classify_temperature(temp))
+
+
+# 11. Write a Python function is_goal_reached(path) where path is a list of robot moves (["up", "right", "right", "down"]).
+# The function should return True if the final position is at (2,0) starting from (0,0), otherwise False.
+
+def is_goal_reached(path):
+    x, y = 0, 0
+    for move in path:
+        if move == 'up':
+            y += 1
+        elif move == 'down':
+            y -= 1
+        elif move == 'left':
+            x -= 1
+        elif move == 'right':
+            x += 1
+    return (x, y) == (2, 0)
+
+path_input = input("Enter robot moves separated by space (up/down/left/right): ").strip().split()
+print("Is goal reached:", is_goal_reached(path_input))
+
+
+# 12. Write a Python class named Student with two attributes: student_id, student_name.
+# Add a new attribute: student_class. Create a function to display all attributes and their values in the Student class.
+
+class Student:
+    def __init__(self, student_id, student_name, student_class):
+        self.student_id = student_id
+        self.student_name = student_name
+        self.student_class = student_class
+
+    def display(self):
+        print(f"ID: {self.student_id}, Name: {self.student_name}, Class: {self.student_class}")
+
+sid = input("Enter student ID: ")
+sname = input("Enter student name: ")
+sclass = input("Enter student class: ")
+student = Student(sid, sname, sclass)
+student.display()
+
+
+# 13. Write a Python class named Student with two instances student1, student2 and assign values to the instances' attributes.
+# Print all the attributes of the student1, student2 instances with their values in the given format.
+
+class Student:
+    def __init__(self, student_id, student_name, student_class):
+        self.student_id = student_id
+        self.student_name = student_name
+        self.student_class = student_class
+
+print("Enter details for student 1:")
+sid1 = input("ID: ")
+sname1 = input("Name: ")
+sclass1 = input("Class: ")
+
+print("Enter details for student 2:")
+sid2 = input("ID: ")
+sname2 = input("Name: ")
+sclass2 = input("Class: ")
+
+student1 = Student(sid1, sname1, sclass1)
+student2 = Student(sid2, sname2, sclass2)
+
+print("Student 1:", vars(student1))
+print("Student 2:", vars(student2))
+
+
+# 14. Write a Python class named Circle constructed from a radius and two methods that will compute the area and the perimeter of a circle.
+
+import math
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return math.pi * self.radius ** 2
+
+    def perimeter(self):
+        return 2 * math.pi * self.radius
+
+radius = float(input("Enter radius of the circle: "))
+circle = Circle(radius)
+print("Area:", circle.area())
+print("Perimeter:", circle.perimeter())
+
+
+# 15. Write a Python class that has two methods: get_String and print_String,
+# get_String accepts a string from the user and print_String prints the string in upper case.
+
+class StringHandler:
+    def __init__(self):
+        self.s = ""
+
+    def get_String(self):
+        self.s = input("Enter a string: ")
+
+    def print_String(self):
+        print(self.s.upper())
+
+handler = StringHandler()
+handler.get_String()
+handler.print_String()
+
+
+# 16. Write a Python class named Robot that has attributes: name, task, and battery_level.
+# The class should have methods: perform_task() → Prints the task the robot is performing and decreases battery by 10%.
+# recharge() → Sets battery level back to 100%. status() → Prints the robot's name, current task, and battery level.
+
+class Robot:
+    def __init__(self, name, task, battery_level=100):
+        self.name = name
+        self.task = task
+        self.battery_level = battery_level
+
+    def perform_task(self):
+        if self.battery_level >= 10:
+            print(f"{self.name} is performing {self.task}")
+            self.battery_level -= 10
+        else:
+            print("Battery too low to perform task.")
+
+    def recharge(self):
+        self.battery_level = 100
+
+    def status(self):
+        print(f"Name: {self.name}, Task: {self.task}, Battery: {self.battery_level}%")
+
+r_name = input("Enter robot name: ")
+r_task = input("Enter robot task: ")
+robot1 = Robot(r_name, r_task)
+robot1.perform_task()
+robot1.status()
+robot1.recharge()
+robot1.status()
